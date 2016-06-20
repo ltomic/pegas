@@ -1,0 +1,10 @@
+{{ user }}
+
+{% if subs %}
+	<p> Solved Tasks: </p>
+	{% for sub in subs %}
+		{{ sub.code.task }}
+	{% endfor %}
+{% else %}
+	<p> No solved tasks </p>
+{% endif %}

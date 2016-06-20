@@ -1,0 +1,33 @@
+<head>
+	{% load staticfiles %}
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	
+	<script type="text/javascript" src="{% static 'js/task-ajax.js' %}"></script>
+</head>
+
+<h2 data-name="user">{{ user.user.username }}</h2>
+<h1 data-name="task">{{ task.name }}</h1>
+
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<div id="subs">
+</div>
+
+<!--{% for sub in subs %}
+	<p><a href="/paas/task/{{ task.url }}/{{ sub.id }}">{{ sub.id }}</a> | {{ sub.date }} | {{ sub.verdict }} | {{ sub.time }} | {{ sub.memory }}</p>
+{% endfor %} -->
+
+<form action="/paas/task/{{ task.url }}/submit/" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<p>{{ form.non_field_errors }}</p>
+	<p>{{ form.code.label_tag }} {{ form.code.help_text }}</p>
+
+	<p>
+		{{ form.code.errors }}
+		{{ form.code }}
+	</p>
+
+	<p><input type="submit" value="Upload"/></p>
+</form>

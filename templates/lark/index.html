@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Index | Bala </title>
+		{% load staticfiles %}
+		<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}"/>
+	</head>
+
+	<body>
+		<a href="/paas/myuser/"> My account </a>
+		<h1>List of tasks</h1>
+		<div class="nav nav-list">
+			<form>
+			<label>Search:</label>
+			<input class="search-query span10" type="text" autocomplete="off" name="search" value="" id="search" />
+			</form>
+		</ul>
+		<div id="tasks">
+			{% if tasks %}
+				<ul id='tasklist'>
+				{% for task in tasks %}
+					<li><a href="task/{{ task.name }}">{{ task.name }}</a></li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+		<a href="/paas/logout/">Logout</a>
+	</body>
+</html>

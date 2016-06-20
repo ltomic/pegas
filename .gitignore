@@ -1,0 +1,13 @@
+bin/
+content/
+include/
+lib/
+local/
+pip-selfcheck.json
+test/
+pegas/local_settings.py
+*.pyc
+*~
+*migrations/
+
+

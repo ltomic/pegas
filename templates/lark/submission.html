@@ -1,0 +1,16 @@
+<head>
+	{% load staticfiles %}
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/submission.js' %}"></script>
+</head>
+
+<h2 data-name='user'>{{ user.user.username }}</h2>
+<h1 data-name='task'>{{ task.name }}</h1>
+
+<p id="main"><span data-name='id'>{{ sub.id }}</span> | {{ sub.code.date }} | {{ sub.verdict }} | {{ sub.time }} | {{ sub.memory }}</p>
+
+<pre> {{ code }} </pre>
+
+<div id="tests">
+</div>
