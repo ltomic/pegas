@@ -8,4 +8,4 @@ $(BINDIR):
 		mkdir -p $(BINDIR)
 
 run_code: $(SRCDIR)/run_code.cpp | $(BINDIR)
-		$(CC) $(CFLAGS) $(SRCDIR)/run_code.cpp -w -o $(BINDIR)/run_code
+		$(CC) $(CFLAGS) $(SRCDIR)/run_code.cpp -w -o lark/sandbox/bin/run_code

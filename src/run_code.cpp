@@ -94,7 +94,7 @@ void parent(int pid) {
 	fprintf(info, "\"time\" : \"%lf\"\n", time_used);
 }
 
-void child(FILE *in, FILE *out) {
+void child(FILE *in, FILE *out, char *argv[512]) {
 	dup2(fileno(in), STDIN_FILENO);
 	dup2(fileno(out), STDOUT_FILENO);
 	fclose(in);
@@ -107,10 +107,9 @@ void child(FILE *in, FILE *out) {
 	getrlimit(RLIMIT_AS, &limit);
 	limit.rlim_cur = limit.rlim_max = memory_limit * 1024L * 1024L;
 	setrlimit(RLIMIT_AS, &limit);
-	char *const argv[] = {"lark/sandbox/code", 0};
 	char *envp [] = {
-		"HOME=/usr/home/prog/pegas/lark/sandbox",
-		"PATH=./",
+		"HOME=./",
+		"PATH=./bin",
 		"USER=ltomic",
 		"LOGNAME=ltomic",
 		"PWD=./",
@@ -122,30 +121,34 @@ void child(FILE *in, FILE *out) {
 	_exit(1);
 }
 
-void run_test() {
+void run_test(char *argv[512]) {
 	int pid;
 	FILE *in, *out;
 
-	open_file(in, "lark/sandbox/tests/in", 0);
-	open_file(out, "lark/sandbox/ans", 1);
+	open_file(in, "./tests/in", 0);
+	open_file(out, "./ans", 1);
 	if ((pid = fork()) == -1) {
 		perror("fork");
 	}
 	if (pid != 0) {
 		parent(pid);
 	} else {
-		child(in, out);
+		child(in, out, argv);
 	}
 	fclose(in);
 	fclose(out);
 }
 
-int main(int argc, char **argv) {
-	open_file(info, "lark/sandbox/info.json", 1);
+int main(int argc, char *argv[512]) {
+  open_file(info, "./info.json", 1);
 	fprintf(info, "{\n");
-	open_file(errors, "lark/sandbox/errors", 1);
+	open_file(errors, "./errors", 1);
 	read_limits(argv[1], argv[2]);
-	run_test();
+  argv++; argv++; argv++;
+  for (int i = 0; argv[i]; ++i) {
+    printf("%s\n", argv[i]);
+  }
+	run_test(argv);
 	fprintf(info, "}");
 	fclose(info);
 	fclose(errors);

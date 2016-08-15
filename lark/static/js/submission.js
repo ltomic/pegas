@@ -3,7 +3,7 @@ $(document).ready(function() {
 	console.log(id);
 	var refresh = 0;
 	var update_list = function() {
-		$.getJSON('/paas/list_test_result', {sub_id: id}, function(data) {
+		$.getJSON('/list_test_result', {sub_id: id}, function(data) {
 			refresh = 0;
 			$("#tests").text("");
 			$("#main").text("");

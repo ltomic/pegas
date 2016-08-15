@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var update_list = function(query) {
-		$.getJSON('/paas/search_task/', {search: query}, function(data) {
+		$.getJSON('search_task/', {search: query}, function(data) {
 			$("#tasks").text("");
 			var task_list = []
 			var cnt = data.tasks.length;

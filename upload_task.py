@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pegas.settings")
 django.setup()
-from lark.models import Task, TestCase
+from tasks.models import Task, TestCase
 
 def upload(name):
 	BASE_DIR = os.path.dirname(__file__)

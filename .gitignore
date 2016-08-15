@@ -9,5 +9,5 @@ pegas/local_settings.py
 *.pyc
 *~
 *migrations/
-
-
+*.swp
+lark/sandbox

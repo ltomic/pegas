@@ -19,15 +19,17 @@
 	<p><a href="/paas/task/{{ task.url }}/{{ sub.id }}">{{ sub.id }}</a> | {{ sub.date }} | {{ sub.verdict }} | {{ sub.time }} | {{ sub.memory }}</p>
 {% endfor %} -->
 
-<form action="/paas/task/{{ task.url }}/submit/" method="post" enctype="multipart/form-data">
+<form action="/submit/{{ task.url }}/" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
-	<p>{{ form.non_field_errors }}</p>
-	<p>{{ form.code.label_tag }} {{ form.code.help_text }}</p>
+	<p>{{ code_form.non_field_errors }}</p>
+	<p>{{ code_form.code.label_tag }} {{ code_form.code.help_text }}</p>
 
 	<p>
-		{{ form.code.errors }}
-		{{ form.code }}
+		{{ code_form.code.errors }}
+		{{ code_form.code }}
+    {{ code_form.lang }}
 	</p>
+
 
 	<p><input type="submit" value="Upload"/></p>
 </form>

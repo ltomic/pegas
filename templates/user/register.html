@@ -8,10 +8,10 @@
 		<h1>Register with Rango</h1>
 		{% if registered %}
 		<strong>Thank you for registering!</strong>
-		<a href="/paas/login">Login</a><br />
+		<a href="/user/login">Login</a><br />
 		{% else %}
 		Register here!
-		<form id="user_form" method="post" action="/paas/register/" enctype="multipart/form-data">
+		<form id="user_form" method="post" action="/user/register/" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ user_form.as_p }}
 			{{ profile_form.as_p }}

@@ -36,8 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-		'rest_framework',
-		'lark',
+    'rest_framework',
+    'user',
+    'lark',
+    'tasks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,7 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pegas.wsgi.application'
 
-LOGIN_URL = '/paas/login/'
+LOGIN_URL = '/user/login/'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases

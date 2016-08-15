@@ -1,5 +1,7 @@
 from django.contrib import admin
-from lark.models import UserProfile, Task, TestCase, Submission, Submission_judge
+from lark.models import Submission, Submission_judge, Language
+from user.models import UserProfile
+from tasks.models import Task, TestCase
 
 class TestCaseInline(admin.TabularInline):
 	model = TestCase
@@ -15,3 +17,4 @@ admin.site.register(UserProfile)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Submission)
 admin.site.register(Submission_judge)
+admin.site.register(Language)

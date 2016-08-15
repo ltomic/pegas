@@ -5,7 +5,7 @@ $(document).ready(function() {
 	console.log(task);
 	console.log(user);
 	var update_list = function() {
-		$.getJSON('/paas/list_submissions', {user: user, task: task}, function(data) {
+		$.getJSON('/list_submissions', {user: user, task: task}, function(data) {
 			refresh = 0;
 			console.log(1);
 			$("#subs").text("");
@@ -14,7 +14,7 @@ $(document).ready(function() {
 			var cnt = data.subs.length;
 			for (var i = 0; i < cnt; ++i) {
 				var sub = data.subs[i];
-				var id = "<a href=/paas/task/" + task + "/" + sub.id + ">";
+				var id = "<a href=/task/" + task + "/" + sub.id + ">";
 				id += sub.id + "</a>";
 				var s = id + "|" + sub.date + "|" +	sub.verdict + "|";
 				s += sub.time + "|" + sub.memory;

@@ -1,11 +1,5 @@
 from rest_framework import serializers
-from lark.models import Task, Submission, Submission_test
-
-class TaskSerializer(serializers.Serializer):
-	name = serializers.CharField(max_length=20)
-
-	def create(self, data):
-		return Task.objects.create(**data)
+from lark.models import Submission, Submission_test
 
 class SubmissionSerializer(serializers.Serializer):
 	id = serializers.IntegerField()
