@@ -1,0 +1,18 @@
+{
+  "C++": {
+    "run": "bin",
+    "ext": "cpp"
+    },
+  "C++11": {
+    "run": "bin",
+    "ext": "cxx"
+    },
+  "Python 2": {
+    "run": "python",
+    "ext": "py"
+    },
+  "Python 3": {
+    "run": "python3",
+    "ext": "py3"
+    }
+}

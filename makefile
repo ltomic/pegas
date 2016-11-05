@@ -1,4 +1,4 @@
-CC=g++-4.9
+CC=g++-4.8
 SRCDIR=src
 BINDIR=bin
 

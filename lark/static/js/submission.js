@@ -29,5 +29,5 @@ $(document).ready(function() {
 		});
 	}
 	update_list();
-	var intervalid = setInterval(update_list, 50);
+	var intervalid = setInterval(update_list, 100);
 });

@@ -1,4 +1,7 @@
 {
-	"time_limit": 1,
-	"memory_limit": 32	
+  "limits": {
+    "time": 1,
+    "memory": 32
+    },
+  "checker_lang": "Python 2"
 }

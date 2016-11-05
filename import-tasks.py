@@ -14,13 +14,13 @@ dirs = os.walk('test')
 
 
 for i in dirs:
-	name = re_taskname.match(str(i[0]))
-	if name == None:
-		continue
-	name = name.group(1)
-	task = Task.objects.filter(name=name)
-	if len(task) != 0:
-		continue
-	print name
-	upload(name)
+    name = re_taskname.match(str(i[0]))
+    if name == None:
+    	continue
+    name = name.group(1)
+    task = Task.objects.filter(name=name)
+    if len(task) != 0:
+    	continue
+    print name
+    upload(name)
 	

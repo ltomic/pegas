@@ -78,6 +78,7 @@ void parent(int pid) {
 	pid_t pid2;
 	int status = 0, memory_used = 128;
 	double time_used = 0;
+	printf("%d\n", pid);
 	do {
 		pid2 = waitpid(pid, &status, WUNTRACED | WNOHANG);
 		memory_used = max(memory_used, get_memory_usage(pid));
@@ -88,7 +89,8 @@ void parent(int pid) {
 		}
 		int signal = WIFSIGNALED(status) ? WTERMSIG(status) : 0;
 	} while (pid2 == 0);
-
+	
+	printf("%lf\n", time_used);
 	fprintf(info, "\"signal\" : \"%d\",\n", WTERMSIG(status));
 	fprintf(info, "\"memory\" : \"%.2f\",\n", memory_used / 1024.0);
 	fprintf(info, "\"time\" : \"%lf\"\n", time_used);
@@ -145,9 +147,10 @@ int main(int argc, char *argv[512]) {
 	open_file(errors, "./errors", 1);
 	read_limits(argv[1], argv[2]);
   argv++; argv++; argv++;
-  for (int i = 0; argv[i]; ++i) {
+	for (int i = 0; argv[i]; ++i) {
     printf("%s\n", argv[i]);
   }
+	fflush(stdout);
 	run_test(argv);
 	fprintf(info, "}");
 	fclose(info);
